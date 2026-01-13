@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agencia de Viajes | Mundo Libre</title>
+    <style>
+        /* 1. Estilos Generales */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; line-height: 1.6; color: #333; scroll-behavior: smooth; }
+
+        /* 2. Header con el degradado corregido */
+        header { 
+            background: linear-gradient(90deg, rgba(55, 48, 207, 1) 0%, rgba(12, 12, 235, 1) 35%, rgba(0, 212, 255, 1) 100%);
+            color: white; 
+            padding: 2rem; 
+            text-align: center; 
+        }
+
+        nav { background: #2c3e50; padding: 10px; text-align: center; position: sticky; top: 0; z-index: 1000; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
+        nav a:hover { color: #00d4ff; }
+
+        .hero { background: #f4f4f4; padding: 40px; text-align: center; }
+
+        .container { padding: 20px; max-width: 1000px; margin: auto; }
+
+        /* 3. Tarjetas con efecto de movimiento (Hover) */
+        .destinos { display: flex; gap: 20px; flex-wrap: wrap; justify-content: space-around; }
+        .tarjeta { 
+            border: 1px solid #ddd; 
+            border-radius: 8px; 
+            width: 30%; 
+            min-width: 250px; 
+            overflow: hidden; 
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.1); 
+            transition: 0.3s; /* Suaviza la animación */
+            background: white;
+        }
+        .tarjeta:hover { 
+            transform: translateY(-10px); /* La tarjeta sube un poco */
+            box-shadow: 0px 10px 20px rgba(0,0,0,0.2); 
+        }
+        .tarjeta img { width: 100%; height: 150px; object-fit: cover; }
+        .tarjeta-info { padding: 15px; }
+
+        /* 4. Formulario */
+        form { background: #ecf0f1; padding: 20px; border-radius: 8px; margin-top: 20px; }
+        label { display: block; margin-top: 10px; font-weight: bold; }
+        input, select { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { background: #3622e6; color: white; border: none; padding: 12px; margin-top: 20px; cursor: pointer; border-radius: 5px; width: 100%; font-size: 16px; font-weight: bold; }
+        button:hover { background: #2437e1d2; }
+
+        footer { text-align: center; padding: 20px; background: #2c3e50; color: white; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Agencia de Viajes "Mundo Libre"</h1>
+        <p>Tu aventura comienza aquí</p>
+    </header>
+
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#destinos">Destinos</a>
+        <a href="#contacto">Reservar</a>
+    </nav>
+
+    <section class="hero" id="inicio">
+        <h2>¿Listo para descubrir el mundo?</h2>
+        <p>Ofrecemos los mejores paquetes turísticos con todo incluido.</p>
+    </section>
+
+    <div class="container">
+        <h2 id="destinos">Destinos Destacados</h2>
+        <div class="destinos">
+            <div class="tarjeta">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80" alt="Playa">
+                <div class="tarjeta-info">
+                    <h3>Caribe Total</h3>
+                    <p>Playas de arena blanca y sol todo el año.</p>
+                    <strong>799 €</strong>
+                </div>
+            </div>
+
+            <div class="tarjeta">
+                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=400&q=80" alt="Montaña">
+                <div class="tarjeta-info">
+                    <h3>Alpes Suizos</h3>
+                    <p>Aventura y nieve en las montañas más bellas.</p>
+                    <strong>1,200 €</strong>
+                </div>
+            </div>
+
+            <div class="tarjeta">
+                <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=400&q=80" alt="Camping">
+                <div class="tarjeta-info">
+                    <h3>Bosque Profundo</h3>
+                    <p>Desconecta de la ciudad en plena naturaleza.</p>
+                    <strong>450 €</strong>
+                </div>
+            </div>
+        </div>
+
+        <h2 id="contacto">Solicita tu Presupuesto</h2>
+        <form id="reservaForm">
+            <label for="nombre">Nombre Completo:</label>
+            <input type="text" id="nombre" placeholder="Ej. Ana García" required>
+
+            <label for="destinoSeleccionado">Selecciona tu destino:</label>
+            <select id="destinoSeleccionado">
+                <option value="Caribe Total">Caribe Total</option>
+                <option value="Alpes Suizos">Alpes Suizos</option>
+                <option value="Bosque Profundo">Bosque Profundo</option>
+            </select>
+
+            <label for="fecha">Fecha tentativa:</label>
+            <input type="date" id="fecha" required>
+
+            <button type="submit">¡Quiero información!</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Agencia de Viajes Mundo Libre. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        document.getElementById('reservaForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita que la página se refresque
+            
+            const nombre = document.getElementById('nombre').value;
+            const destino = document.getElementById('destinoSeleccionado').value;
+            
+            alert("¡Hola " + nombre + "! Hemos recibido tu solicitud para " + destino + ". Te contactaremos pronto.");
+            
+            this.reset(); // Limpia el formulario
+        });
+    </script>
+
+</body>
+</html>
